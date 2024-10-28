@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PT_App.TESTEN.IgangLFU"
+             Title="IgangLFU">
+    <VerticalStackLayout>
+        <Label Padding="10"
+            Text="Tag en dyb indånding og fyld lungerne op med luft"
+            FontSize="Medium"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+
+        <Label Padding="10"
+      Text="Luk læberne tæt om mundstykket"
+      FontSize="Medium"
+      VerticalOptions="Center" 
+      HorizontalOptions="Center" />
+
+        <Label 
+Text="Pust hurtigt og kraftigt i mundstykket indtil dine lunger er tomme"
+FontSize="Medium"
+VerticalOptions="Center" 
+HorizontalOptions="Center" />
+
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+            <ProgressBar x:Name="FVCProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Red"/>
+            <Label x:Name="FVCLabel" Text="0%" FontSize="Medium" />
+        </StackLayout>
+
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+            <ProgressBar x:Name="FEV1ProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Orange" />
+            <Label x:Name="FEV1Label" Text="0%" FontSize="Medium" />
+        </StackLayout>
+        <Button Text="Næste Test" 
+                x:Name="NextTestButton"
+                Clicked="OnNextTestButtonClicked" 
+                IsVisible="False" />
+        
+        <Button x:Name="AfslutButton" Text="Afslut" IsVisible="False" Clicked="OnAfslutButtonClicked" />
+        <!-- Initially hidden -->
+
+    </VerticalStackLayout>
+</ContentPage>

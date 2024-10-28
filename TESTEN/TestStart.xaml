@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PT_App.TESTEN.TestStart"
+             Title="TestStart">
+    <VerticalStackLayout>
+        <Label 
+            Text="TRYK "
+            VerticalOptions="Center" 
+            HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Label 
+      Text="for at påbegynde"
+      VerticalOptions="Center" 
+      HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Label
+      Text="FCV og FEV1"
+      VerticalOptions="Center" 
+      HorizontalOptions="Center"
+            FontSize="Medium"/>
+        <Label Padding="30"
+  Text=" "
+  VerticalOptions="Center" 
+  HorizontalOptions="Center"
+        />
+        <Button
+ Text=" "
+ Clicked="OnPåbegyndLFUButton"
+ HorizontalOptions="Center" 
+   CornerRadius="200" 
+    WidthRequest="150" 
+    HeightRequest="150"
+            BackgroundColor="Red"/>
+    </VerticalStackLayout>
+</ContentPage>
