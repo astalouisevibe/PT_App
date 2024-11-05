@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PT_App.Historik"
-             Title="Historik">
+             Title="Historik"
+             NavigationPage.HasNavigationBar="False">
 
     <!-- ScrollView til at tillade scrolling -->
     <ScrollView>
