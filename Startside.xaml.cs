@@ -7,12 +7,15 @@ namespace PT_App
     {
         private PatientData _patientData;
         private string _cprNumber;
+        private PatientService _patientService;
 
         public Startside(PatientData patientData)
         {
             InitializeComponent();
             _patientData = patientData;
             _cprNumber = patientData.CPR;
+
+            _patientService = new PatientService();
             BindPatientData();
 
         }
@@ -39,7 +42,7 @@ namespace PT_App
         }
 
 
-        private void BindPatientData()
+    private void BindPatientData()
         {
             CPRLabel.Text = _patientData.CPR;
             NameLabel.Text = _patientData.Name;
