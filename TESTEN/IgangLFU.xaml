@@ -40,7 +40,13 @@ HorizontalOptions="Center" />
         <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
             <ProgressBar x:Name="FEV1ProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Orange" />
             <Label x:Name="FEV1Label" Text="0%" FontSize="Medium" />
+
         </StackLayout>
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+            <ProgressBar x:Name="RatioProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Blue"/>
+            <Label x:Name="RatioLabel" Text="0%" FontSize="Medium" />
+        </StackLayout>
+
         <Button Text="Næste Test" 
                 x:Name="NextTestButton"
                 Clicked="OnNextTestButtonClicked" 

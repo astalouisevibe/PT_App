@@ -18,20 +18,25 @@ public partial class IgangLFU : ContentPage
     private async void SetFixedProgressValues()
     {
         Random random = new Random();
-        double fcvProcessValue = Math.Round(3 + random.NextDouble() * (6 - 3), 2);
+        double fvcProcessValue = Math.Round(3 + random.NextDouble() * (6 - 3), 2);
         double fev1ProcessValue = Math.Round(2.5 + random.NextDouble() * (5 - 2.5 ), 2);
 
        
-        // Opdater progressbar og label for FVC11
-        FVCProgressBar.Progress = fev1ProcessValue;
-        FVCLabel.Text = $"{fev1ProcessValue }%";
+        // Opdater progressbar og label for FVC
+        FVCProgressBar.Progress = fvcProcessValue / 6.0;
+        FVCLabel.Text = $"{fvcProcessValue } L";
 
         // Opdater progressbar og label for FEV1
-        FEV1ProgressBar.Progress = fcvProcessValue;
-        FEV1Label.Text = $"{fcvProcessValue }%";
-        await SaveLungFunctionValues(_currentCPR, FVCProgressBar.Progress, FEV1ProgressBar.Progress);
+        FEV1ProgressBar.Progress = fev1ProcessValue/ 5.0;
+        FEV1Label.Text = $"{fev1ProcessValue } L";
+
+        double ratio = Math.Round((fev1ProcessValue / fvcProcessValue)*100,2);
+        RatioProgressBar.Progress = ratio /100;
+        RatioLabel.Text = $"{ratio} %";
+
+        await SaveLungFunctionValues(_currentCPR, fvcProcessValue, fev1ProcessValue, ratio);
     }
-    public async Task SaveLungFunctionValues(string cprNumber, double fev1ProcessValue, double fcvProcessValue)
+    public async Task SaveLungFunctionValues(string cprNumber, double fev1ProcessValue, double fcvProcessValue, double ratio)
     {
         var maaling = new PatientMålinger()
         {
@@ -39,6 +44,7 @@ public partial class IgangLFU : ContentPage
             Dato = DateTime.Now.ToString(),
             FCV = fcvProcessValue.ToString(),
             FEV1 = fev1ProcessValue.ToString(),
+            Ratio = ratio.ToString()
         };
         await App.Database.UpdateMålingerAsync(maaling);
 

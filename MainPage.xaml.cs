@@ -9,6 +9,8 @@ namespace PT_App
         public MainPage()
         {
             InitializeComponent();
+            _patientService = new PatientService();
+            _validator = new CPRValidator();
         }
 
         private async void OnSearchButtonClicked(object sender, EventArgs e)
@@ -16,7 +18,7 @@ namespace PT_App
             string cprNumber = CPRNumberEntry.Text;
 
             // CPR-validering
-            if (!_validator.IsValid(cprNumber))
+            if (_validator.IsValid(cprNumber) == false)
             {
                 await DisplayAlert("Ugyldigt CPR", "CPR-nummeret skal være 10 cifre.", "OK");
                 return;
