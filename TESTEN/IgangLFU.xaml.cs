@@ -16,19 +16,19 @@ public partial class IgangLFU : ContentPage
         CheckTestCount();
     }
     private async void SetFixedProgressValues()
-    {  
+    {
         Random random = new Random();
+        double fcvProcessValue = Math.Round(3 + random.NextDouble() * (6 - 3), 2);
+        double fev1ProcessValue = Math.Round(2.5 + random.NextDouble() * (5 - 2.5 ), 2);
 
-        double fev1ProcessValue = Math.Round(random.NextDouble(), 2); //
-        double fcvProcessValue = Math.Round(random.NextDouble(), 2); ;
-
+       
         // Opdater progressbar og label for FVC11
         FVCProgressBar.Progress = fev1ProcessValue;
-        FVCLabel.Text = $"{fev1ProcessValue * 100}%";
+        FVCLabel.Text = $"{fev1ProcessValue }%";
 
         // Opdater progressbar og label for FEV1
         FEV1ProgressBar.Progress = fcvProcessValue;
-        FEV1Label.Text = $"{fcvProcessValue * 100}%";
+        FEV1Label.Text = $"{fcvProcessValue }%";
         await SaveLungFunctionValues(_currentCPR, FVCProgressBar.Progress, FEV1ProgressBar.Progress);
     }
     public async Task SaveLungFunctionValues(string cprNumber, double fev1ProcessValue, double fcvProcessValue)
