@@ -4,27 +4,36 @@
              x:Class="PT_App.TESTEN.TestStart"
              Title="TestStart"
              NavigationPage.HasNavigationBar="False">
-    <VerticalStackLayout>
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center">
         <Label 
-            Text="TRYK "
+            Text="Tryk på knappen "
             VerticalOptions="Center" 
             HorizontalOptions="Center"
-            FontSize="Medium"/>
+            FontSize="Medium"
+            Margin="0,0,0,0"/>
         <Label 
       Text="for at påbegynde"
       VerticalOptions="Center" 
       HorizontalOptions="Center"
-            FontSize="Medium"/>
+            FontSize="Medium"
+              Margin="0,10,0,10"/>
         <Label
-      Text="FCV og FEV1"
+      Text="din lungefunktionsundersøgelse"
       VerticalOptions="Center" 
       HorizontalOptions="Center"
-            FontSize="Medium"/>
-        <Label Padding="30"
-  Text=" "
-  VerticalOptions="Center" 
-  HorizontalOptions="Center"
-        />
+            FontSize="Medium"
+            Margin="0,0,0,50"/>
+      
         <Button
  Text=" "
  Clicked="OnPåbegyndLFUButton"
@@ -32,6 +41,6 @@
    CornerRadius="200" 
     WidthRequest="150" 
     HeightRequest="150"
-            BackgroundColor="Red"/>
+            BackgroundColor="#f04b3c"/>
     </VerticalStackLayout>
 </ContentPage>

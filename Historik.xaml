@@ -4,6 +4,15 @@
              x:Class="PT_App.Historik"
              Title="Historik"
              NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <!-- ScrollView til at tillade scrolling -->
     <ScrollView>
@@ -30,7 +39,8 @@
                     </CollectionView.ItemTemplate>
                 </CollectionView>
 
-                <Button x:Name="Tilbage" Text="Tilbage" Clicked="OnReturnButtonClicked" HorizontalOptions="Center" />
+                <Button x:Name="Tilbage" Text="Tilbage" Clicked="OnReturnButtonClicked" HorizontalOptions="Center"   TextColor="Black"
+  Background="#F5f5f5"/>
             </StackLayout>
         </VerticalStackLayout>
     </ScrollView>

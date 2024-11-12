@@ -4,6 +4,15 @@
              x:Class="PT_App.TESTEN.IgangLFU"
              NavigationPage.HasNavigationBar="False"
 >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
     <VerticalStackLayout>
         <Label Padding="10"
             Text="Tag en dyb indånding og fyld lungerne op med luft"
@@ -35,9 +44,12 @@ HorizontalOptions="Center" />
         <Button Text="Næste Test" 
                 x:Name="NextTestButton"
                 Clicked="OnNextTestButtonClicked" 
-                IsVisible="False" />
-        
-        <Button x:Name="AfslutButton" Text="Afslut" IsVisible="False" Clicked="OnAfslutButtonClicked" />
+                IsVisible="False" 
+                 TextColor="Black"
+Background="#F5f5f5"/>
+
+        <Button x:Name="AfslutButton" Text="Afslut" IsVisible="False" Clicked="OnAfslutButtonClicked"  TextColor="Black"
+Background="#F5f5f5" />
         <!-- Initially hidden -->
 
     </VerticalStackLayout>

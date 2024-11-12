@@ -4,10 +4,22 @@
              x:Class="PT_App.LogbogPage"
              Title="LogbogPage"
              NavigationPage.HasNavigationBar="False">
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+
     <VerticalStackLayout>
-        <Label 
-            Text="Under ombygning"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+        <Label Text="Logbog" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Padding="20"/>
+        <Editor x:Name="commentEditor" Placeholder="Skriv din note her..." HorizontalOptions="CenterAndExpand" WidthRequest="500" TextChanged="OnCommentEditorTextChanged" Background="#F5F5F5"/>
+        <Button x:Name="GemNote"  Text="Gem Note" Clicked="OnSaveCommentClicked" HorizontalOptions="Center" Margin="0,20,0,0" IsVisible="False"   TextColor="Black"
+  Background="#F5f5f5"/>
+        <Label Text="Tidligere noter " VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Padding="50" />
+        <Button x:Name="Tilbage" Text="Tilbage" Clicked="OnReturnButtonClicked" HorizontalOptions="Center"   TextColor="Black"
+  Background="#F5f5f5"/>
     </VerticalStackLayout>
 </ContentPage>

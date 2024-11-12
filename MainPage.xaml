@@ -3,6 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PT_App.MainPage"
              NavigationPage.HasNavigationBar="False">
+    
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
 
     <ScrollView>
         <VerticalStackLayout
@@ -41,7 +50,8 @@
                 Clicked="OnSearchButtonClicked"
                 SemanticProperties.Hint="Fremsøg Patient"
                 HorizontalOptions="Center" 
-                TextColor="White"
+                 TextColor="Black"
+                 Background="#F5f5f5"
                 CornerRadius="5"
                 />
 

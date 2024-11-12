@@ -4,13 +4,24 @@
              x:Class="PT_App.Profile"
              Title="Profile"
              NavigationPage.HasNavigationBar="False">
+
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
+
     <ScrollView>
         
         <VerticalStackLayout Padding="20">
-            
-                
+            <Label Text="Profil" HorizontalOptions="Center" FontSize="Medium" TextColor="Black"/>
+
             <!-- Gender Picker -->
-            <Picker x:Name="GenderPicker" Title="Vælg Biologisk køn">
+            <Picker x:Name="GenderPicker" Title="Vælg Biologisk køn" Background="White" Margin="0,20,0,0" MaximumWidthRequest="400" >
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Mand</x:String>
@@ -20,7 +31,7 @@
             </Picker>
 
             <!-- Height Picker -->
-            <Picker x:Name="HeightPicker" Title="Vælg Højde (cm)">
+            <Picker x:Name="HeightPicker" Title="Vælg Højde (cm) uden sko" Background="White" Margin="0,20,0,0" MaximumWidthRequest="400" >
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>150</x:String>
@@ -37,7 +48,7 @@
             </Picker>
 
             <!-- Weight Picker -->
-            <Picker x:Name="WeightPicker" Title="Vælg Vægt (kg)">
+            <Picker x:Name="WeightPicker" Title="Vælg Vægt (kg)" Background="White" Margin="0,20,0,0" MaximumWidthRequest="400" >
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>45</x:String>
@@ -59,7 +70,7 @@
             </Picker>
 
             <!-- Ethnicity Picker -->
-            <Picker x:Name="EthnicityPicker" Title="Vælg Etnicitet">
+            <Picker x:Name="EthnicityPicker" Title="Vælg Etnicitet" Background="White" MaximumWidthRequest="400" Margin="0,20,0,0">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
                         <x:String>Kaukasisk</x:String>
@@ -71,13 +82,16 @@
                 </Picker.ItemsSource>
             </Picker>
 
-            <Button x:Name="Ændre" Text="Ændre data" Clicked="Edit_Clicked" HorizontalOptions="Center" />
-            <Button x:Name="Gem" Text="Gem" Clicked="Gem_Clicked" IsVisible="False" HorizontalOptions="Center" />
+            <Button x:Name="Ændre" Text="Ændre data" Clicked="Edit_Clicked" HorizontalOptions="Center"  TextColor="Black"
+  Background="#F5f5f5" CornerRadius="5" Margin="0,20,0,10"/>
+            <Button x:Name="Gem" Text="Gem" Clicked="Gem_Clicked" IsVisible="False" HorizontalOptions="Center"   TextColor="Black"
+  Background="#F5f5f5" CornerRadius="5" Margin="0,20,0,10" />
             <Button
 Text="Tilbage"
 Clicked="OnReturnButton"
 HorizontalOptions="Center" 
-TextColor="white"
+ TextColor="Black"
+  Background="#F5f5f5"
 CornerRadius="5" />
         </VerticalStackLayout>
     </ScrollView>

@@ -5,6 +5,15 @@
              x:Class="PT_App.LFUstart"
              NavigationPage.HasNavigationBar="False"
 >
+    <ContentPage.Background>
+        <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#87CEFA" Offset="0.0" />
+            <!-- Lys blå -->
+            <GradientStop Color="#1E90FF" Offset="1.0" />
+            <!-- Mørkere blå -->
+        </LinearGradientBrush>
+    </ContentPage.Background>
+    
     <VerticalStackLayout>
         <Label Padding="15"
             Text="Video guide"
@@ -16,9 +25,9 @@
           x:Name=" VideoGuide"
           ShouldAutoPlay="False"
           ShouldShowPlaybackControls="True"
-          Source="C:\Users\astal\source\repos\PT_App\Resources\Videos\IMG_0946.MOV"
-          HeightRequest="400"
-          WidthRequest="400"
+          Source="C:\Users\astal\source\repos\PT_App\Resources\Videos\Forberedende video LFU(1).mov"
+          HeightRequest="300"
+          WidthRequest="500"
           />
         <Label 
       Text=""
@@ -30,14 +39,16 @@
  Text="Næste"
  Clicked="OnTestStart"
  HorizontalOptions="Center" 
- TextColor="white"
- CornerRadius="5" />
+ TextColor="Black"
+Background="#F5f5f5"
+            CornerRadius="5" />
  
         <Button
  Text="Tilbage"
  Clicked="OnReturnButton"
  HorizontalOptions="Center" 
- TextColor="white"
+ TextColor="Black"
+Background="#F5f5f5"
  CornerRadius="5" />
 
 
