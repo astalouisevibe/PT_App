@@ -11,7 +11,6 @@ public partial class TestStart : ContentPage
         _patientData = patientData;
         _testCount = testCount; // Brug den aktuelle værdi af testCount
     }
-
     private async void OnPåbegyndLFUButton(object sender, EventArgs e)
     {
         string cprNumber = _patientData.CPR; // Hent CPR fra patientdata

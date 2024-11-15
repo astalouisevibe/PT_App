@@ -8,8 +8,6 @@ public partial class Historik : ContentPage
 	{
 		InitializeComponent();
         LoadPatientMålinger(cprNumber);
-
-
     }
     private async void LoadPatientMålinger(string cprNumber)
     {

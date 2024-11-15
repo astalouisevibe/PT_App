@@ -1,12 +1,17 @@
+using System.Collections.ObjectModel;
+
 namespace PT_App;
 
 public partial class LogbogPage : ContentPage
 {
-	public LogbogPage()
+    private ObservableCollection<string> previousNotes = new ObservableCollection<string>();
+
+    public LogbogPage()
 	{
 		InitializeComponent();
-	}
-    private List<string> previousNotes = new List<string>();
+        NotesListView.ItemsSource = previousNotes;
+
+    }
     private void OnCommentEditorTextChanged(object sender, TextChangedEventArgs e)
     {
         // Vis knappen, hvis der er tekst i editoren; skjul den ellers
@@ -23,10 +28,11 @@ public partial class LogbogPage : ContentPage
             // Ryd tekstfeltet
             commentEditor.Text = string.Empty;
             GemNote.IsVisible = false;
+            
 
         }
     }
-
+   
         private async void OnReturnButtonClicked(object sender, EventArgs e)
 	{
 		await Navigation.PopAsync();

@@ -32,7 +32,7 @@ public partial class IgangLFU : ContentPage
 
         double ratio = Math.Round((fev1ProcessValue / fvcProcessValue)*100,2);
         RatioProgressBar.Progress = ratio /100;
-        RatioLabel.Text = $"{ratio} %";
+        RatioLabel.Text = $"{ratio:F2} %";
 
         await SaveLungFunctionValues(_currentCPR, fvcProcessValue, fev1ProcessValue, ratio);
     }
