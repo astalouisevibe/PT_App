@@ -1,3 +1,5 @@
+using System.ComponentModel.Design;
+using Plugin.Maui.Audio;
 namespace PT_App.TESTEN;
 
 public partial class IgangLFU : ContentPage
@@ -5,7 +7,11 @@ public partial class IgangLFU : ContentPage
     private string _currentCPR;
     private int _testCount;
     private PatientData _patientData;
-    private int MaxTests = 2;
+    private int _maxTest = 2;
+    private Audio _audio;
+    private int pressure;
+  
+
     public IgangLFU(string cprNumber, int testCount)
     {
         InitializeComponent();
@@ -14,6 +20,13 @@ public partial class IgangLFU : ContentPage
         _patientData = new PatientData { CPR = cprNumber };
         SetFixedProgressValues();
         CheckTestCount();
+        OnPressureReceived(pressure);
+     
+    }
+
+    private void OnPressureReceived (double pressure)
+    {
+        _audio.HandlePlaySound(pressure);
     }
     private async void SetFixedProgressValues()
     {
@@ -53,7 +66,7 @@ public partial class IgangLFU : ContentPage
     private  void CheckTestCount()
     {
 
-        if (_testCount < MaxTests)
+        if (_testCount < _maxTest)
         {
             NextTestButton.IsVisible = true;
         }
