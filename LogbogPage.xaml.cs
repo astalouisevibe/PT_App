@@ -28,12 +28,14 @@ public partial class LogbogPage : ContentPage
             // Ryd tekstfeltet
             commentEditor.Text = string.Empty;
             GemNote.IsVisible = false;
-            
-
         }
     }
-   
-        private async void OnReturnButtonClicked(object sender, EventArgs e)
+    private void OnSaveCommentCompleted(object sender, EventArgs e)
+    {
+        OnSaveCommentClicked(sender, e);
+    }
+
+    private async void OnReturnButtonClicked(object sender, EventArgs e)
 	{
 		await Navigation.PopAsync();
 	}

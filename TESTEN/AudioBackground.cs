@@ -18,8 +18,9 @@ public class Audio
     {
         try
         {
-            _audioPlayer = _audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("test.m4a"));
-            _audioPlayer.Play();
+            _audioPlayer = _audioManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("pust.m4a"));
+       //     _audioPlayer.Play();
+       
             _isPlaying = true; // Markér som afspiller
         }
         catch (Exception ex)
@@ -34,15 +35,10 @@ public class Audio
         _isPlaying = false; // Markér som stoppet
     }
 
-    public void HandlePlaySound(double pressure)
+    public async void HandlePlaySound()
     {
-        if (pressure > 1.0 && !_isPlaying)
-        {
-            PlaySoundAsync();
-        }
-        else if (pressure <= 1.0 && _isPlaying)
-        {
-            StopSound();
-        }
+        
+           await PlaySoundAsync();
+      
     }
 }

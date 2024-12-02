@@ -7,8 +7,6 @@ using SQLite;
 
 namespace PT_App
 {
-    
-
     public class PatientDatabase
     {
         private SQLiteAsyncConnection _database;
@@ -18,6 +16,7 @@ namespace PT_App
             _database = new SQLiteAsyncConnection(dbPath);
             _database.CreateTableAsync<PatientData>().Wait();
             _database.CreateTableAsync<PatientMålinger>().Wait();
+            _database.CreateTableAsync<PatientResultater>().Wait();
         }
 
         // Søger efter en patient via CPR-nummer
@@ -43,5 +42,4 @@ namespace PT_App
                             .ToListAsync();
         }
     }
-
 }

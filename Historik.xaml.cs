@@ -16,7 +16,7 @@ public partial class Historik : ContentPage
 
         if (målinger != null)
         {
-            var målingStrings = målinger.Select(m => $"Dato: {m.Dato}, FEV1: {m.FEV1}, FCV: {m.FCV}, Ratio: {m.Ratio}").ToList();
+            var målingStrings = målinger.Select(m => $"Dato: {m.Dato}, FEV1: {m.FEV1:F2}, FCV: {m.FCV:F2}, Ratio: {m.Ratio:F2}").Reverse().ToList();
             MålingerListView.ItemsSource = målingStrings;
         }
         else

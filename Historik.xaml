@@ -26,20 +26,22 @@
             <StackLayout>
                 <Label Text="Lungefunktion:" 
                        FontSize="20" 
-                       Margin="5,0,0,0" />
+                       Margin="5,5,0,0" />
 
                 <!-- CollectionView til at vise data -->
-                <CollectionView x:Name="MålingerListView">
+                <Label />
+                <CollectionView x:Name="MålingerListView" >
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <Label Text="{Binding .}" 
-                                   FontSize="Small"  
-                                   Margin="2,0,0,0"/>
+                            <Frame Padding="10" Margin="5">
+                                <Label Text="{Binding .}" FontSize="Small" />
+                            </Frame>
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
                 </CollectionView>
+           
 
-                <Button x:Name="Tilbage" Text="Tilbage" Clicked="OnReturnButtonClicked" HorizontalOptions="Center"   TextColor="Black"
+            <Button x:Name="Tilbage" Text="Tilbage" Clicked="OnReturnButtonClicked" HorizontalOptions="Center"   TextColor="Black"
   Background="#F5f5f5"/>
             </StackLayout>
         </VerticalStackLayout>

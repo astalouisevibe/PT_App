@@ -52,6 +52,7 @@
 	<ItemGroup>
 	  <None Remove="Resources\Images\logo1.png" />
 	  <None Remove="Resources\Images\User.png" />
+	  <None Remove="Resources\Raw\pust.m4a" />
 	  <None Remove="Resources\Raw\test.m4a" />
 	</ItemGroup>
 

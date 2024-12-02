@@ -14,7 +14,8 @@
     </ContentPage.Background>
     
     <VerticalStackLayout>
-        <Label Padding="10"
+        <Label Margin="0,150,0,0"
+   
             Text="Tag en dyb indånding og fyld lungerne op med luft"
             FontSize="Medium"
             VerticalOptions="Center" 
@@ -32,27 +33,29 @@ FontSize="Medium"
 VerticalOptions="Center" 
 HorizontalOptions="Center" />
 
-        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+  
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0" IsVisible="{Binding IsDataReady}">
             <ProgressBar x:Name="FVCProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Red"/>
             <Label x:Name="FVCLabel" Text="0%" FontSize="Medium" />
         </StackLayout>
 
-        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0" IsVisible="{Binding IsDataReady}">
             <ProgressBar x:Name="FEV1ProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Orange" />
             <Label x:Name="FEV1Label" Text="0%" FontSize="Medium" />
 
         </StackLayout>
-        <StackLayout Orientation="Horizontal" Margin="20,10,20,0">
+        <StackLayout Orientation="Horizontal" Margin="20,10,20,0" IsVisible="{Binding IsDataReady}">
             <ProgressBar x:Name="RatioProgressBar" Progress="0" HeightRequest="20" HorizontalOptions="FillAndExpand" BackgroundColor="LightGray" ProgressColor="Blue"/>
             <Label x:Name="RatioLabel" Text="0%" FontSize="Medium" />
         </StackLayout>
 
         <Button Text="Næste Test" 
-                x:Name="NextTestButton"
-                Clicked="OnNextTestButtonClicked" 
-                IsVisible="False" 
-                 TextColor="Black"
-Background="#F5f5f5"/>
+         x:Name="NextTestButton"
+         Clicked="OnNextTestButtonClicked" 
+         IsVisible="False" 
+          TextColor="Black"
+         Background="#F5f5f5"/>
+
 
         <Button x:Name="AfslutButton" Text="Afslut" IsVisible="False" Clicked="OnAfslutButtonClicked"  TextColor="Black"
 Background="#F5f5f5" />

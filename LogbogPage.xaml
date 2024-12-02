@@ -16,7 +16,7 @@
     <VerticalStackLayout>
         <Label Text="Logbog" VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Padding="20"/>
         <Editor x:Name="commentEditor" Placeholder="Skriv din note her..." HorizontalOptions="CenterAndExpand" WidthRequest="500" TextChanged="OnCommentEditorTextChanged" Background="#F5F5F5" Completed="OnSaveCommentClicked"/>
-        <Button x:Name="GemNote"  Text="Gem Note" Clicked="OnSaveCommentClicked" HorizontalOptions="Center" Margin="0,20,0,0" IsVisible="False" TextColor="Black" Background="#F5f5f5" />
+        <Button x:Name="GemNote"  Text="Gem Note" Clicked="OnSaveCommentClicked" HorizontalOptions="Center" Margin="0,20,0,0" IsVisible="False" TextColor="Black" Background="#F5f5f5"  />
         <Label Text="Tidligere noter " VerticalOptions="Center" HorizontalOptions="Center" FontSize="Medium" Padding="0,50,0,0" />
 
 

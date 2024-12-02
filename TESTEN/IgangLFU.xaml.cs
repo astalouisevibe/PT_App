@@ -1,69 +1,81 @@
 using System.ComponentModel.Design;
+using System.Diagnostics;
 using Plugin.Maui.Audio;
+using PT_App.Server;
 namespace PT_App.TESTEN;
 
 public partial class IgangLFU : ContentPage
 {
+
     private string _currentCPR;
     private int _testCount;
     private PatientData _patientData;
     private int _maxTest = 2;
-    private Audio _audio;
-    private int pressure;
-  
+    private RunClient runClient;
+ 
+
+
+    public IgangLFU()
+    {
+
+    }
 
     public IgangLFU(string cprNumber, int testCount)
     {
+        BindingContext = this;
         InitializeComponent();
-       _currentCPR = cprNumber;
+        OnAppearing();
+        _currentCPR = cprNumber;
         _testCount = testCount;
         _patientData = new PatientData { CPR = cprNumber };
-        SetFixedProgressValues();
+        LoadAndDisplayData(cprNumber);
         CheckTestCount();
-        OnPressureReceived(pressure);
-     
+
     }
-
-    private void OnPressureReceived (double pressure)
+    private async void LoadAndDisplayData(string cprNumber)
     {
-        _audio.HandlePlaySound(pressure);
-    }
-    private async void SetFixedProgressValues()
-    {
-        Random random = new Random();
-        double fvcProcessValue = Math.Round(3 + random.NextDouble() * (6 - 3), 2);
-        double fev1ProcessValue = Math.Round(2.5 + random.NextDouble() * (5 - 2.5 ), 2);
-
-       
-        // Opdater progressbar og label for FVC
-        FVCProgressBar.Progress = fvcProcessValue / 6.0;
-        FVCLabel.Text = $"{fvcProcessValue } L";
-
-        // Opdater progressbar og label for FEV1
-        FEV1ProgressBar.Progress = fev1ProcessValue/ 5.0;
-        FEV1Label.Text = $"{fev1ProcessValue } L";
-
-        double ratio = Math.Round((fev1ProcessValue / fvcProcessValue)*100,2);
-        RatioProgressBar.Progress = ratio /100;
-        RatioLabel.Text = $"{ratio:F2} %";
-
-        await SaveLungFunctionValues(_currentCPR, fvcProcessValue, fev1ProcessValue, ratio);
-    }
-    public async Task SaveLungFunctionValues(string cprNumber, double fev1ProcessValue, double fcvProcessValue, double ratio)
-    {
-        var maaling = new PatientMålinger()
+        try
         {
-            CPR = cprNumber,
-            Dato = DateTime.Now.ToString(),
-            FCV = fcvProcessValue.ToString(),
-            FEV1 = fev1ProcessValue.ToString(),
-            Ratio = ratio.ToString()
-        };
-        await App.Database.UpdateMålingerAsync(maaling);
+            // Hent data fra databasen
+            var målinger = await App.Database.GetPatientMålingerByCPRAsync(cprNumber);
 
+            // Hent den nyeste måling
+            var nyesteMåling = målinger
+                .Where(m => m.CPR == cprNumber)
+                .OrderByDescending(m => DateTime.Parse(m.Dato))
+                .FirstOrDefault();
+
+            if (nyesteMåling != null)
+            {
+                // Parse værdier
+                double fvc = double.Parse(nyesteMåling.FCV);
+                double fev1 = double.Parse(nyesteMåling.FEV1);
+                double ratio = (fev1 / fvc) * 100.0;
+
+                // Opdater FVC
+                FVCProgressBar.Progress = fvc / 6.0; // Antag maksimal værdi som 6.0
+                FVCLabel.Text = $"{fvc:F2} L";
+
+                // Opdater FEV1
+                FEV1ProgressBar.Progress = fev1 / 5.0; // Antag maksimal værdi som 5.0
+                FEV1Label.Text = $"{fev1:F2} L";
+
+                // Opdater Ratio
+                RatioProgressBar.Progress = ratio / 100.0; // Ratio er i procent
+                RatioLabel.Text = $"{ratio:F2} %";
+            }
+            else
+            {
+                await DisplayAlert("Ingen data", "Ingen målinger fundet for dette CPR-nummer.", "OK");
+            }
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Fejl", $"Kunne ikke hente data: {ex.Message}", "OK");
+        }
     }
 
-    private  void CheckTestCount()
+    private void CheckTestCount()
     {
 
         if (_testCount < _maxTest)
@@ -78,13 +90,18 @@ public partial class IgangLFU : ContentPage
 
     private async void OnAfslutButtonClicked(object sender, EventArgs e)
     {
+
+        // if test valid --> startside
+       
         // Naviger tilbage til startsiden
         await Navigation.PushAsync(new Startside(_patientData));
+
+        // if test invalid --> testcount--, new teststart
     }
 
     private async void OnNextTestButtonClicked(object sender, EventArgs e)
     {
-        // Navigate to the next test
+
         _testCount++;
         await Navigation.PushAsync(new TestStart(_patientData,_testCount));
     }
