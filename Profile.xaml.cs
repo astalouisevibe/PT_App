@@ -20,11 +20,9 @@ namespace PT_App
         private async Task LoadPatientData()
         {
             _patientData = await App.Database.GetPatientByCPRAsync(_patientData.CPR);
-            await LoadProfile(_patientData.CPR); // Indlæs profildata også
-
+            await LoadProfile(_patientData.CPR); // Indlæs profildata 
         }
-  
-
+ 
         private async Task LoadProfile(string cprNumber)
         {
             _patientData = await App.Database.GetPatientByCPRAsync(cprNumber);
@@ -70,7 +68,7 @@ namespace PT_App
 
         private async void Gem_Clicked(object sender, EventArgs e)
         {
-            SaveProfile(); // Sørg for, at gemme metoden er asynkron
+            SaveProfile(); 
 
             GenderPicker.IsEnabled = false;
             HeightPicker.IsEnabled = false;

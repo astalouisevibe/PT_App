@@ -7,7 +7,6 @@ namespace PT_App.TESTEN;
 public partial class IgangLFU : ContentPage
 {
 
-    private string _currentCPR;
     private int _testCount;
     private PatientData _patientData;
     private int _maxTest = 2;
@@ -25,7 +24,6 @@ public partial class IgangLFU : ContentPage
         BindingContext = this;
         InitializeComponent();
         OnAppearing();
-        _currentCPR = cprNumber;
         _testCount = testCount;
         _patientData = new PatientData { CPR = cprNumber };
         LoadAndDisplayData(cprNumber);

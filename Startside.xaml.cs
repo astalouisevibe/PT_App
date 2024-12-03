@@ -7,7 +7,6 @@ namespace PT_App
     {
         private PatientData _patientData;
         private string _cprNumber;
-        private PatientService _patientService;
 
         public Startside(PatientData patientData)
         {
@@ -15,7 +14,6 @@ namespace PT_App
             _patientData = patientData;
             _cprNumber = patientData.CPR;
 
-            _patientService = new PatientService();
             BindPatientData();
 
         }

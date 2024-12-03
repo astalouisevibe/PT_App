@@ -11,7 +11,7 @@ public class Audio
 
     public Audio(IAudioManager audioManager)
     {
-        _audioManager = audioManager; // Få afhængigheden via DI
+        _audioManager = audioManager; 
     }
 
     public async Task PlaySoundAsync()

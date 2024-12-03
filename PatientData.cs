@@ -2,7 +2,6 @@
 
 namespace PT_App
 {
-    // PatientData-klassen defineret separat, men kan også placeres i en anden fil
     public class PatientData
     {
         [PrimaryKey]
