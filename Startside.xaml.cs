@@ -13,9 +13,7 @@ namespace PT_App
             InitializeComponent();
             _patientData = patientData;
             _cprNumber = patientData.CPR;
-
             BindPatientData();
-
         }
 
 

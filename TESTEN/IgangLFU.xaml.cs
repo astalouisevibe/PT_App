@@ -6,18 +6,11 @@ namespace PT_App.TESTEN;
 
 public partial class IgangLFU : ContentPage
 {
-
     private int _testCount;
     private PatientData _patientData;
     private int _maxTest = 2;
-    private RunClient runClient;
  
-
-
-    public IgangLFU()
-    {
-
-    }
+ 
 
     public IgangLFU(string cprNumber, int testCount)
     {

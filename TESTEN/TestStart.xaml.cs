@@ -30,6 +30,7 @@ public partial class TestStart : ContentPage
         try
         {
             string cprNumber = _patientData.CPR;
+           
 
             runClient.Running(cprNumber);
             // Send "start" besked til serveren        
